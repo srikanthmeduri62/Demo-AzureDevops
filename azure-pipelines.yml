@@ -42,10 +42,11 @@ steps:
     ArtifactName: 'drop'
   condition: succeededOrFailed()
 
-- task: AzureRmWebAppDeployment@4
+
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'azure-first'
-    azureSubscription: '50f5af39-a837-4565-b045-55534e5bac74'
+    azureSubscription: 'Azure subscription 1(50f5af39-a837-4565-b045-55534e5bac74)'
     appType: 'webApp'
-    WebAppName: 'newtestwebapp1'
-    packageForLinux: '$(build.artifactStagingDirectory)\WebApp.zip'
+    appName: 'newtestwebapp1'
+    package: '$(build.artifactStagingDirectory)\WebApp.zip'
+    deploymentMethod: 'auto'
