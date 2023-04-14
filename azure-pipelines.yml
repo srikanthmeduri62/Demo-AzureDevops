@@ -45,7 +45,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'azure-first'
-    azureSubscription: 'Azure subscription 1(50f5af39-a837-4565-b045-55534e5bac74)'
+    azureSubscription: '50f5af39-a837-4565-b045-55534e5bac74'
     appType: 'webApp'
     WebAppName: 'newtestwebapp1'
     packageForLinux: '$(build.artifactStagingDirectory)\WebApp.zip'
