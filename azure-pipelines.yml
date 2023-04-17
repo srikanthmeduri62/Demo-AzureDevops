@@ -8,16 +8,17 @@ trigger:
 
 pool:
   vmImage: 'windows-latest'
+
 parameters:
 - name: solution
   type: string
-#  default: '**/*.csproj'
+  default: '**/*.csproj'
 - name: buildPlatform
   type: string
-#  default: 'Any CPU'
+  default: 'Any CPU'
 - name: buildConfiguration
   type: string
-#  default: 'Release'
+  default: 'Release'
 
 # variables:
 #   solution: '**/*.csproj'
@@ -29,15 +30,15 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '$(solution)'
+    restoreSolution: '${{ parameters.solution }}'
 
 
 - task: VSBuild@1
   inputs:
-    solution: '$(solution)'
+    solution: '${{ parameters.solution }}'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    platform: '${{ parameters.buildPlatform }}'
+    configuration: '${{ parameters.buildConfiguration }}'
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
   inputs:
