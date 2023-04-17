@@ -8,11 +8,21 @@ trigger:
 
 pool:
   vmImage: 'windows-latest'
+parameters:
+- name: solution
+  type: string
+  default: '**/*.csproj'
+- name: buildPlatform
+  type: string
+  default: 'Any CPU'
+- name: buildConfiguration
+  type: string
+  default: 'Release'
 
-variables:
-  solution: '**/*.csproj'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+# variables:
+#   solution: '**/*.csproj'
+#   buildPlatform: 'Any CPU'
+#   buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
