@@ -52,9 +52,9 @@ steps:
     ArtifactName: 'drop'
   condition: succeededOrFailed()
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Azure subscription 1(50f5af39-a837-4565-b045-55534e5bac74)'
-    appType: 'webAppLinux'
-    appName: 'newtestwebapp2'
-    package: '$(build.artifactStagingDirectory)\WebApp.zip'
+# - task: AzureWebApp@1
+#   inputs:
+#     azureSubscription: 'Azure subscription 1(50f5af39-a837-4565-b045-55534e5bac74)'
+#     appType: 'webAppLinux'
+#     appName: 'newtestwebapp2'
+#     package: '$(build.artifactStagingDirectory)\WebApp.zip'
