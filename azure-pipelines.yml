@@ -34,10 +34,10 @@ steps:
 
 - task: VSBuild@1
   inputs:
-    solution: '$(solution)'
+    solution: '${{ parameters.solution }}'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    platform: '${{ parameters.buildPlatform }}'
+    configuration: '${{ buildConfiguration }}'
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
   inputs:
